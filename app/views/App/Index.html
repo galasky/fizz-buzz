@@ -1,0 +1,117 @@
+{{set . "title" "Fizz-Buzz"}}
+{{template "header.html" .}}
+
+<header class="jumbotron" style="background-color:#957bbe">
+  <div class="container">
+    <div class="row">
+      <h1>Welcome to my Fizz Buzz :)</h1>
+      <p></p>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+    </div>
+  </div>
+</div>
+
+<p>
+<div class="container">
+  <form class="my-form">
+    <div class="form-group">
+      <label for="string1">Substitutes</label>
+      <input name="string1" type="text" class="form-control" id="string1" aria-describedby="stringHelp" placeholder="Enter the first string">
+      <input name="string2" type="text" class="form-control" id="string2" aria-describedby="stringHelp" placeholder="Enter the second string">
+      <small id="stringHelp" class="form-text text-muted">Let your imagination take flight!</small>
+    </div>
+    <div class="form-group">
+      <label for="int1">Multiple</label>
+      <input name="int1" type="number" class="form-control" id="int1" aria-describedby="int1Help" placeholder="Enter the first multiple">
+      <small id="int1Help" class="form-text text-muted">All multiples of this number will be replaced by the first String</small>
+      <input name="int2" type="number" class="form-control" id="int2" aria-describedby="int2Help" placeholder="Enter the second number">
+      <small id="int2Help" class="form-text text-muted">All multiples of this number will be replaced by the second String</small>
+    </div>
+    <div class="form-group">
+      <label for="int1">Limit</label>
+      <input name="limit" type="number" class="form-control" id="limit" aria-describedby="limitHelp" placeholder="Chose a limit number">
+      <small id="limitHelp" class="form-text text-muted">It will return a list of strings with numbers from 1 to limit</small>
+    </div>
+    <!--<div class="form-check">-->
+    <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+    <!--<label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+    <!--</div>-->
+    <button class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</p>
+
+<p>
+<div class="container">
+  <div id="success" class="alert alert-success" role="alert">
+    <p>
+<div class="form-group">
+  <label for="exampleFormControlTextarea1">Result :</label>
+  <textarea id="result" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+
+</p>
+
+  </div>
+
+  <div id="warning" class="alert alert-warning" role="alert">
+    This is a success alert—check it out!
+  </div>
+</div>
+</p>
+
+
+
+<script>
+function hide (elements) {
+  elements = elements.length ? elements : [elements];
+  for (var index = 0; index < elements.length; index++) {
+    elements[index].style.display = 'none';
+  }
+}
+
+function show (elements, specifiedDisplay) {
+  elements = elements.length ? elements : [elements];
+  for (var index = 0; index < elements.length; index++) {
+    elements[index].style.display = specifiedDisplay || 'block';
+  }
+}
+
+
+ hide(document.getElementById('success'));
+ hide(document.getElementById('warning'));
+function getParam() {
+  return "?string1=" + document.getElementById("string1").value + "&string2=" + document.getElementById("string2").value + "&int1=" + document.getElementById("int1").value + "&int2=" + document.getElementById("int2").value + "&limit=" + document.getElementById("limit").value;
+}
+
+
+$('.my-form').on('submit', function () {
+    $.ajax({
+       url : 'generate' + getParam(),
+       type : 'GET',
+       dataType : 'json', // On désire recevoir du HTML
+       success : function(result, statut){ // code_html contient le HTML renvoyé
+          if (result == null) {
+            hide(document.getElementById('success'));
+            show(document.getElementById('warning'));
+          } else {
+            hide(document.getElementById('warning'));
+            show(document.getElementById('success'));
+            document.getElementById("result").innerHTML=JSON.stringify(result)
+          }
+       }
+    });
+    return false;
+});
+</script>
+
+
+
+{{template "footer.html" .}}
