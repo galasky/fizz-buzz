@@ -25,6 +25,9 @@ Don't forget to set the environment variable PATH to your $GOPATH/bin folder in 
 
 ### Clone the web server:
 
+Go to your go workspace and create this path : src/github.com/galasky
+Then go to the galasky folder
+
 To clone the fizz-buzz run this command line:
 
     git clone https://github.com/galasky/fizz-buzz.git
