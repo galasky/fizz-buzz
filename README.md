@@ -45,7 +45,7 @@ Go to [http://localhost:9000/](http://localhost:9000/) and you'll see the web si
 
 The default directory structure of a generated Revel application:
 
-    myapp               App root
+    fizz-buzz               App root
       app               App sources
         controllers     App controllers
           init.go       Interceptor registration
@@ -65,6 +65,10 @@ The default directory structure of a generated Revel application:
 app
 
     The app directory contains the source code and templates for your application.
+
+function
+
+    The code the endpoint of fizz-buzz is in this folder : fizz-buzz/app/controllers/app.go
 
 conf
 
