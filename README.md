@@ -17,6 +17,8 @@ Then follow the [installation instructions](https://golang.org/doc/install#insta
 
 ### Get the Revel framework
 
+Revel is a web framework for the Go language.
+
 To get the Revel framework, run:
 
     go get -u github.com/revel/cmd/revel
