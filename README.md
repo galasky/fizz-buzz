@@ -70,7 +70,7 @@ app
 
 function
 
-    The code the endpoint of fizz-buzz is in this folder : fizz-buzz/app/controllers/app.go
+    The endpoint of fizz-buzz is in this folder : fizz-buzz/app/controllers/app.go
 
 conf
 
