@@ -32,7 +32,7 @@ func (c App) Generate(string1, string2 string, int1, int2, limit int) revel.Resu
 	var results []string
 
 	// build the result for the limit given
-	for i := 1; i < limit; i++ {
+	for i := 1; i <= limit; i++ {
 		results = append(results, addResult(string1, string2, int1, int2, i))
 	}
 
